@@ -25,4 +25,16 @@ router.get('/:id/list', (req,res)=>{
     })
 })
 
+router.get('/:id/instructions', (req,res)=>{
+    const id = req.params.id;
+
+    Qs.getInstructions(id)
+    .then((list)=>{
+        res.status(201).json({list})
+    })
+    .catch((err)=>{
+        res.status(500).json({err})
+    })
+})
+
 module.exports = router;
